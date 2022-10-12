@@ -1,22 +1,26 @@
 import "./TopBox.scss";
-import { useState } from "react";
 
-const TopBox = ({ onAddUser }) => {
-  const [enteredUsername, setEnteredUsername] = useState("");
-  const [enteredAge, setEnteredAge] = useState("");
-  const [displayMsg, setDisplayMsg] = useState("");
-
+const TopBox = ({
+  onAddUser,
+  enteredUsername,
+  setEnteredUsername,
+  enteredAge,
+  setEnteredAge,
+  setHandleModal,
+  setDisplayMsg,
+}) => {
   const addUserHandler = (e) => {
     e.preventDefault();
-
     if (
-      enteredUsername.trim().length === "" ||
+      enteredUsername.trim().length === 0 ||
       enteredAge.trim().length === ""
     ) {
+      setHandleModal(true);
       setDisplayMsg({ message: "Please enter a valid name and age" });
       return;
     }
     if (+enteredAge < 1) {
+      setHandleModal(true);
       setDisplayMsg({ message: "Please enter a valid age (> 0)" });
       return;
     }
