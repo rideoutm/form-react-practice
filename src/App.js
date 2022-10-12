@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import TopBox from "./components/TopBox/TopBox";
+import BottomBox from "./components/BottomBox/BottomBox";
+import { useState } from "react";
+import ModalBox from "./components/ModalBox/ModalBox";
 
 function App() {
+  const [usersList, setUsersList] = useState([]);
+
+  const addUserHandler = (username, userAge) => {
+    setUsersList((prevUsersList) => {
+      return [...prevUsersList, { name: username, age: userAge }];
+    });
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TopBox onAddUser={addUserHandler} />
+      <BottomBox users={usersList} />
+      <ModalBox usersList={usersList} />
     </div>
   );
 }

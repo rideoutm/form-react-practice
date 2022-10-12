@@ -1,0 +1,26 @@
+.bottom-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  min-height: 200px;
+  width: 40%;
+  background: #fff;
+  border-radius: 5px;
+  margin: 0 auto;
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    &-item {
+      list-style: none;
+      width: 80%;
+      padding: 1rem;
+      font-size: 1.25rem;
+      border: 2px solid #000;
+      margin: 0.25rem 2%;
+    }
+  }
+}
